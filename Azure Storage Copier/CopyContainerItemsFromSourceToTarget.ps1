@@ -12,6 +12,7 @@
 # 	-TargetStorageContainerName "specsheets"
 
 # Meal Counter Example, "$AzureCreds ..." and ".\CopyContainerItemsFromSourceToTarget.ps1 ..." are two separate commands:
+# $AzureCreds = Get-Credential
 # .\CopyContainerItemsFromSourceToTarget.ps1 `
 #  -AzureCredential $AzureCreds `
 #  -SourceSubscriptionName "MealCounterProd" `
