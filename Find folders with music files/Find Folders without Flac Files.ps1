@@ -18,6 +18,8 @@ elseif (-not (Split-Path $OutputFile -Leaf)) {
     $OutputFile = Join-Path $OutputFile "flac-less_folders.txt"
 }
 
+Write-Host "Getting folders to scan..."
+
 # Get all subfolders (including root if you want)
 $allFolders = Get-ChildItem -Path $TargetFolder -Directory -Recurse -ErrorAction Stop
 $total = $allFolders.Count
