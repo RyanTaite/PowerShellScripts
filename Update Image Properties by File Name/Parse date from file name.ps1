@@ -2,10 +2,10 @@
 $ErrorActionPreference = "Stop"
 
 # Folder path to search for image files
-$folderPath = "C:\Path\To\Your\Folder"
+$folderPath = "\\Dr-Doink\home\Photos"
 
 # Specify the path for the file to store unrecognized file names
-$unrecognizedFilePath = "C:\Path\To\Your\Folder\UnrecognizedFiles.txt"
+$unrecognizedFilePath = "C:\Users\Ryan\Desktop\UnrecognizedFiles.txt"
 
 # Function to parse date from file name
 function Get-DateFromFileName {
@@ -23,7 +23,9 @@ function Get-DateFromFileName {
 function Update-DateTakenProperty {
     param([string]$filePath, [datetime]$newDate)
     try {
-        [System.IO.File]::SetCreationTime($filePath, $newDate.ToString("yyyy-MM-ddTHH:mm:ss"))
+        $formattedTime = $newDate.ToString("yyyy-MM-ddTHH:mm:ss")
+        [System.IO.File]::SetCreationTime($filePath, $formattedTime)
+        [System.IO.File]::SetLastWriteTime($filePath, $formattedTime)
     }
     catch {
         throw "Error updating the creation time: $_"

@@ -1,10 +1,10 @@
-# Menu Planner Example, "$AzureCreds ..." and ".\ExportDbsToStorage.ps1 ..." are two seperate commands:
+# Example, "$AzureCreds ..." and ".\ExportDbsToStorage.ps1 ..." are two seperate commands:
 # $AzureCreds = Get-Credential
 # .\ExportDbsToStorage.ps1 `
 # 	-AzureCredential $AzureCreds `
-# 	-SourceSubscriptionName "Menu Planner Production" `
-# 	-SourceResourceGroupName "MenuPlanner-Prod" `
-# 	-SourceServerName "menuplanner-dbserver" `
+# 	-SourceSubscriptionName "Your Subscription" `
+# 	-SourceResourceGroupName "Resource-Group-Name" `
+# 	-SourceServerName "YOUR-SOURCE-SERVER" `
 # 	-SourceDbNames ("menuplanner-db", "auth-db", "management-db") `
 # 	-SourceServerUserName "menuplanner-prod" `
 # 	-SourceKeyVaultName "menuplannerkv" `
@@ -22,7 +22,7 @@
 # 	-SourceServerName "mealcounter-db-prod" `
 # 	-SourceDbNames ("MealCounter-Prod") `
 # 	-SourceServerUserName "Developer" `
-# 	-SourceKeyVaultName "mealcounter-kv-prod" `
+# 	-SourceKeyVaultName "mealcounter-kv-prod" ` 
 # 	-TargetSubscriptionName "MealCounterDevTestUAT" `
 # 	-TargetResourceGroupName "mc-shared" `
 # 	-TargetStorageAccountName "mcdbexportstorage" `
