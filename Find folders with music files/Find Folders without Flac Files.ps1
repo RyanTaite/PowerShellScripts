@@ -9,6 +9,15 @@ param(
 # Stop on any error
 $ErrorActionPreference = "Stop"
 
+# If OutputFile is a folder path, append default file name
+if (Test-Path $OutputFile -PathType Container -ErrorAction SilentlyContinue) {
+    $OutputFile = Join-Path $OutputFile "flac-less_folders.txt"
+}
+elseif (-not (Split-Path $OutputFile -Leaf)) {
+    # Handle case where a UNC path ends with a slash (e.g. \\Server\Share\Folder\)
+    $OutputFile = Join-Path $OutputFile "flac-less_folders.txt"
+}
+
 # Get all subfolders (including root if you want)
 $allFolders = Get-ChildItem -Path $TargetFolder -Directory -Recurse -ErrorAction Stop
 $total = $allFolders.Count
