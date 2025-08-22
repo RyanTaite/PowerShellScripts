@@ -35,9 +35,10 @@ foreach ($folder in $allFolders) {
                    -Status "Checking: $($folder.FullName)" `
                    -PercentComplete (($counter / $total) * 100)
 
-    # Check if folder does NOT contain any .flac
-    $flacFiles = Get-ChildItem -Path $folder.FullName -Filter *.flac -File -ErrorAction Stop
-    if (-not $flacFiles) {
+    # Check if folder does NOT contain any .flac and has at least 1 file
+    $files = Get-ChildItem -Path $folder.FullName -File -ErrorAction Stop
+    $flacFiles = $files | Where-Object { $_.Extension -eq ".flac" }
+    if ($files.Count -gt 0 -and $flacFiles.Count -eq 0) {
         $foldersWithoutFlac += $folder.FullName
     }
 }
